@@ -29,4 +29,4 @@ More detailed information and links for the course can be found on the [course w
 
 The certificate for the course can be found below:
 
-- ["Computer Vision for Industrial Inspection" - NVIDIA Deep Learning Institute]() (Issued On: December 2024)
+- ["Computer Vision for Industrial Inspection" - NVIDIA Deep Learning Institute](https://learn.nvidia.com/certificates?id=ByDbxKIeTh68MHUwpAKTvg) (Issued On: March 2025)
