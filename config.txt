@@ -1,0 +1,49 @@
+model_config {
+  arch: "vgg"
+  n_layers: 19
+  use_batch_norm: True
+  freeze_blocks: 0
+  input_image_size: "3,224,224"
+}
+
+train_config {
+  train_dataset_path: "/workspace/tao-experiments/data/train"
+  val_dataset_path: "/workspace/tao-experiments/data/val"
+  pretrained_model_path: "/workspace/tao-experiments/classification/pretrained_vgg19/pretrained_classification_vvgg19/vgg_19.hdf5"
+  optimizer {
+    sgd {
+    lr: 0.01
+    decay: 0.0
+    momentum: 0.9
+    nesterov: False
+    }
+  }
+  n_epochs: 5
+  batch_size_per_gpu: 32
+  n_workers: 8
+  enable_random_crop: False
+  enable_center_crop: False
+  enable_color_augmentation: False
+  preprocess_mode: "caffe"
+  reg_config {
+    type: "L2"
+    scope: "Conv2D, Dense"
+    weight_decay: 0.00005
+  }
+  lr_config {
+    step {
+      learning_rate: 0.006
+      step_size: 10
+      gamma: 0.1
+    }
+  }
+}
+
+eval_config {
+  eval_dataset_path: "/workspace/tao-experiments/data/val"
+  model_path: "/workspace/tao-experiments/classification/vgg19/weights/vgg_005.hdf5"
+  top_k: 1
+  batch_size: 32
+  n_workers: 8
+  enable_center_crop: False
+}
